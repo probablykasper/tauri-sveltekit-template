@@ -34,7 +34,7 @@ fn main() {
     })
     .menu(
       Menu::new()
-        .add_default_app_submenu(&ctx.package_info().name)
+        .add_default_app_submenu_if_macos(&ctx.package_info().name)
         .add_default_file_submenu()
         .add_default_edit_submenu()
         .add_default_view_submenu()
