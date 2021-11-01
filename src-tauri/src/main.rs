@@ -3,9 +3,8 @@
   windows_subsystem = "windows"
 )]
 
-use crate::menu::AddDefaultSubmenus;
 use tauri::api::shell;
-use tauri::{CustomMenuItem, Menu, Submenu, WindowBuilder, WindowUrl};
+use tauri::{CustomMenuItem, Submenu, WindowBuilder, WindowUrl};
 
 mod menu;
 
@@ -32,18 +31,18 @@ fn main() {
         .fullscreen(false);
       return (win, webview);
     })
-    .menu(
-      Menu::new()
-        .add_default_app_submenu_if_macos(&ctx.package_info().name)
-        .add_default_file_submenu()
-        .add_default_edit_submenu()
-        .add_default_view_submenu()
-        .add_default_window_submenu()
-        .add_submenu(Submenu::new(
-          "Help",
-          Menu::new().add_item(custom_item("Learn More")),
-        )),
-    )
+    .menu(menu::new(vec![
+      #[cfg(target_os = "macos")]
+      menu::default_app_submenu(&ctx.package_info().name),
+      menu::default_file_submenu(),
+      menu::default_edit_submenu(),
+      menu::default_view_submenu(),
+      menu::default_window_submenu(),
+      menu::Item::Submenu(Submenu::new(
+        "Help",
+        menu::new(vec![menu::Item::Custom(custom_item("Learn More"))]),
+      )),
+    ]))
     .on_menu_event(|event| {
       let event_name = event.menu_item_id();
       match event_name {
