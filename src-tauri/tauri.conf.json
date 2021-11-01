@@ -4,7 +4,7 @@
   },
   "build": {
     "distDir": "../build",
-    "devPath": "https://localhost:3000",
+    "devPath": "http://localhost:3000",
     "beforeDevCommand": "npm run dev:web",
     "beforeBuildCommand": "npm run build:web"
   },

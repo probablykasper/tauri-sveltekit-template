@@ -21,7 +21,7 @@ fn main() {
     .invoke_handler(tauri::generate_handler![])
     .create_window("main", WindowUrl::default(), |win, webview| {
       let win = win
-        .title("Mr Tagger")
+        .title("Tauri Template")
         .resizable(true)
         .transparent(false)
         .decorations(true)
@@ -49,7 +49,7 @@ fn main() {
       match event_name {
         "Learn More" => {
           shell::open(
-            "https://github.com/probablykasper/mr-tagger".to_string(),
+            "https://github.com/probablykasper/tauri-template".to_string(),
             None,
           )
           .unwrap();
