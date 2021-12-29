@@ -4,14 +4,7 @@
 )]
 
 use tauri::api::shell;
-use tauri::{CustomMenuItem, Submenu, WindowBuilder, WindowUrl};
-
-mod menu;
-
-fn custom_item(name: &str) -> CustomMenuItem {
-  let c = CustomMenuItem::new(name.to_string(), name);
-  return c;
-}
+use tauri::{CustomMenuItem, Menu, MenuEntry, MenuItem, Submenu, WindowBuilder, WindowUrl};
 
 fn main() {
   let ctx = tauri::generate_context!();
@@ -31,16 +24,52 @@ fn main() {
         .fullscreen(false);
       return (win, webview);
     })
-    .menu(menu::new(vec![
-      #[cfg(target_os = "macos")]
-      menu::default_app_submenu(&ctx.package_info().name),
-      menu::default_file_submenu(),
-      menu::default_edit_submenu(),
-      menu::default_view_submenu(),
-      menu::default_window_submenu(),
-      menu::Item::Submenu(Submenu::new(
+    .menu(Menu::with_items([
+      MenuEntry::Submenu(Submenu::new(
+        &ctx.package_info().name,
+        Menu::with_items([
+          MenuItem::About(ctx.package_info().name.clone()).into(),
+          MenuItem::Separator.into(),
+          MenuItem::Services.into(),
+          MenuItem::Separator.into(),
+          MenuItem::Hide.into(),
+          MenuItem::HideOthers.into(),
+          MenuItem::ShowAll.into(),
+          MenuItem::Separator.into(),
+          MenuItem::Quit.into(),
+        ]),
+      )),
+      MenuEntry::Submenu(Submenu::new(
+        "File",
+        Menu::with_items([MenuItem::CloseWindow.into()]),
+      )),
+      MenuEntry::Submenu(Submenu::new(
+        "Edit",
+        Menu::with_items([
+          MenuItem::Undo.into(),
+          MenuItem::Redo.into(),
+          MenuItem::Separator.into(),
+          MenuItem::Cut.into(),
+          MenuItem::Copy.into(),
+          MenuItem::Paste.into(),
+          #[cfg(not(target_os = "macos"))]
+          MenuItem::Separator.into(),
+          MenuItem::SelectAll.into(),
+        ]),
+      )),
+      MenuEntry::Submenu(Submenu::new(
+        "View",
+        Menu::with_items([MenuItem::EnterFullScreen.into()]),
+      )),
+      MenuEntry::Submenu(Submenu::new(
+        "Window",
+        Menu::with_items([MenuItem::Minimize.into(), MenuItem::Zoom.into()]),
+      )),
+      // You should always have a Help menu on macOS because it will automatically
+      // show a menu search field
+      MenuEntry::Submenu(Submenu::new(
         "Help",
-        menu::new(vec![menu::Item::Custom(custom_item("Learn More"))]),
+        Menu::with_items([CustomMenuItem::new("Learn More", "Learn More").into()]),
       )),
     ]))
     .on_menu_event(|event| {
