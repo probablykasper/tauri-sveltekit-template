@@ -13,22 +13,22 @@
 
 ## Dev instructions
 
-1. Install Node.js (v14 works)
-2. Install Rust (v1.54 works)
+### Get started
+
+1. Install Node.js
+2. Install Rust
 3. Follow the [Tauri setup guide](https://tauri.studio/en/docs/getting-started/intro)
 4. Run `npm install`
 
 ### Commands
 - `npm run dev`: Start app in dev mode
 - `npm run build`: Build
-- `npm run lint`: Lint
+- `npm run format`: Format
+- `npm run check`: Check code
 
 ### Release new version
 1. Update `CHANGELOG.md`
 2. Manually bump the version number in `src-tauri/Cargo.toml`
-3. Check for errors and bump the `Cargo.lock` version number
-    ```
-    cargo check --manifest-path src-tauri/Cargo.toml
-    ```
-4. Dispatch the GitHub Release workflow and wait
+3. Run `npm run check` to make sure `Cargo.lock` is up to date
+4. Commit with a tag in the format `v#.#.#`
 5. Add release notes to the generated GitHub release and publish it

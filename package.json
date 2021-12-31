@@ -6,9 +6,8 @@
     "tauri": "tauri",
     "build": "tauri build",
     "build:web": "vite build",
-    "preview": "vite preview",
-    "lint": "prettier --check *.js *.json src",
-    "format": "prettier --write *.js *.json src"
+    "format": "prettier --write --plugin-search-dir=. src *.js && eslint --fix src *.js",
+    "check": "cargo check --manifest-path src-tauri/Cargo.toml && eslint src *.js && svelte-check"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "1.0.0-next.30",
