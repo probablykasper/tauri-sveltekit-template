@@ -1,5 +1,8 @@
 name: Release
 on:
+  push:
+    tags:
+      - 'v*'
   workflow_dispatch:
 
 env:
@@ -32,14 +35,15 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y webkit2gtk-4.0
 
-      - run: npm install && npm run build
+      - run: npm install
+
+      - run: npm run build
 
       - uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          # the action automatically replaces __VERSION__ with the app version
-          tagName: v__VERSION__
-          releaseName: 'v__VERSION__'
+          tagName: ${{ github.ref_name }}
+          releaseName: ${{ github.ref_name }}
           releaseDraft: true
           prerelease: false
