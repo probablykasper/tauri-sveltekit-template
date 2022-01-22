@@ -17,7 +17,7 @@
 
 1. Install Node.js
 2. Install Rust
-3. Follow the [Tauri setup guide](https://tauri.studio/en/docs/getting-started/intro)
+3. Follow the [Tauri setup guide](https://tauri.studio/en/docs/get-started/intro)
 4. Run `npm install`
 
 ### Commands
