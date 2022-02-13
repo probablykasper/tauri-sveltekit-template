@@ -4,7 +4,9 @@
 )]
 
 use tauri::api::shell;
-use tauri::{CustomMenuItem, Menu, MenuEntry, MenuItem, Submenu, WindowBuilder, WindowUrl};
+use tauri::{
+  CustomMenuItem, Manager, Menu, MenuEntry, MenuItem, Submenu, WindowBuilder, WindowUrl,
+};
 
 fn main() {
   let ctx = tauri::generate_context!();
@@ -15,7 +17,6 @@ fn main() {
       let win = win
         .title("Tauri Template")
         .resizable(true)
-        .transparent(false)
         .decorations(true)
         .always_on_top(false)
         .inner_size(800.0, 550.0)
@@ -77,11 +78,8 @@ fn main() {
       let event_name = event.menu_item_id();
       match event_name {
         "Learn More" => {
-          shell::open(
-            "https://github.com/probablykasper/tauri-template".to_string(),
-            None,
-          )
-          .unwrap();
+          let url = "https://github.com/probablykasper/tauri-template".to_string();
+          shell::open(&event.window().shell_scope(), url, None).unwrap();
         }
         _ => {}
       }
