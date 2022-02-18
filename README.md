@@ -2,7 +2,6 @@
 
 - **Tauri**
 - **GitHub action** for cross-platform builds
-- **Builds for macOS 10.13+**
 - **Svelte**
 - **Vite**
 - **TypeScript**
