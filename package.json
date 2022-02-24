@@ -6,9 +6,9 @@
     "tauri": "tauri",
     "build": "tauri build",
     "build:web": "vite build",
-    "test": "cargo test --manifest-path ./src-tauri/Cargo.toml",
-    "format": "prettier --write --plugin-search-dir=. src *.js && eslint --fix src *.js",
-    "check": "cargo check --manifest-path src-tauri/Cargo.toml && eslint src *.js && svelte-check"
+    "test": "echo 'No tests'",
+    "lint": "prettier --check --plugin-search-dir=. src *.js && eslint src *.js && svelte-check",
+    "format": "prettier --write --plugin-search-dir=. src *.js && eslint --fix src *.js"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "1.0.0-next.37",
