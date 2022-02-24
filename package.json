@@ -1,9 +1,9 @@
 {
   "private": true,
   "scripts": {
+    "tauri": "tauri",
     "dev": "tauri dev",
     "dev:web": "vite",
-    "tauri": "tauri",
     "build": "tauri build",
     "build:web": "vite build",
     "test": "echo 'No tests'",
