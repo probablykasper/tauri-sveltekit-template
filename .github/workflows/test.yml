@@ -3,15 +3,8 @@ on:
   push:
     branches:
       - '*'
-    tags-ignore:
-      - '*'
   pull_request:
-    branches:
-      - '*'
   workflow_dispatch:
-
-env:
-  CARGO_TERM_COLOR: always
 
 jobs:
   test:
@@ -27,12 +20,17 @@ jobs:
       - name: Node.js setup
         uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 16
 
       - name: Rust setup
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+
+      - name: Rust Cache
+        uses: Swatinem/rust-cache@v1
+        with:
+          working-directory: ./src-tauri
 
       - name: Install webkit2gtk (ubuntu only)
         if: matrix.platform == 'ubuntu-latest'
@@ -40,21 +38,16 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y webkit2gtk-4.0
 
-      - name: Rust cache
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.cargo/bin/
-            ~/.cargo/registry/index/
-            ~/.cargo/registry/cache/
-            ~/.cargo/git/db/
-            src-tauri/target/
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-
       - run: npm install
 
       - run: npm run build:web
 
+      - run: npm run lint
+        if: matrix.platform == 'ubuntu-latest'
+
       - run: npm run test
 
-      - run: npm run check
+      - name: Build
+        uses: tauri-apps/tauri-action@b3f03835ca527e9735b386f1b1302ca70714b1e6
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
