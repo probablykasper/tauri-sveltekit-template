@@ -1,4 +1,4 @@
-# Tauri Template
+# Tauri Svelte Template
 
 - **Tauri**
 - **GitHub action** for cross-platform builds
