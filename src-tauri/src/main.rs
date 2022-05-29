@@ -15,7 +15,7 @@ fn main() {
   tauri::Builder::default()
     .invoke_handler(tauri::generate_handler![])
     .setup(|app| {
-      let _ = WindowBuilder::new(app, "main", WindowUrl::default())
+      let _window = WindowBuilder::new(app, "main", WindowUrl::default())
         .title("Tauri Template")
         .inner_size(800.0, 550.0)
         .min_inner_size(400.0, 200.0)
