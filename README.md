@@ -18,6 +18,7 @@
 2. Install Rust
 3. Follow the [Tauri setup guide](https://tauri.studio/en/docs/get-started/intro)
 4. Run `npm install`
+5. Find and replace the text `tauri-template` and `Tauri Template`.
 
 ### Commands
 - `npm run dev`: Start app in dev mode

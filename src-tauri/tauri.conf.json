@@ -11,12 +11,7 @@
   "tauri": {
     "bundle": {
       "active": true,
-      "targets": [
-        "dmg",
-        "deb",
-        "appimage",
-        "msi"
-      ],
+      "targets": ["dmg", "deb", "appimage", "msi"],
       "identifier": "com.example.tauri-template",
       "icon": [
         "icons/32x32.png",
@@ -27,7 +22,7 @@
       ],
       "resources": [],
       "externalBin": [],
-      "copyright": "© 2021 kasper.space",
+      "copyright": "© 2022 Tauri Template",
       "category": "DeveloperTool",
       "shortDescription": "",
       "longDescription": "",
