@@ -2,6 +2,12 @@
   "package": {
     "productName": "Tauri Svelte Template"
   },
+  "build": {
+    "distDir": "../build",
+    "devPath": "http://localhost:3000",
+    "beforeDevCommand": "npm run dev:web",
+    "beforeBuildCommand": "npm run build:web"
+  },
   "tauri": {
     "bundle": {
       "active": true,
