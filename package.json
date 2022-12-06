@@ -6,7 +6,6 @@
     "dev:web": "vite",
     "build": "tauri build",
     "build:web": "vite build",
-    "test": "echo 'No tests'",
     "lint": "prettier --check --plugin-search-dir=. src *.js && eslint src *.js && svelte-check",
     "format": "prettier --write --plugin-search-dir=. src *.js && eslint --fix src *.js"
   },
