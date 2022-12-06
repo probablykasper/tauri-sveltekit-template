@@ -1,6 +1,6 @@
 {
   "package": {
-    "productName": "Tauri Template"
+    "productName": "Tauri Svelte Template"
   },
   "build": {
     "distDir": "../build",
@@ -12,7 +12,7 @@
     "bundle": {
       "active": true,
       "targets": ["dmg", "deb", "appimage", "msi"],
-      "identifier": "com.example.tauri-template",
+      "identifier": "com.example.tauri-svelte-template",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",
@@ -22,7 +22,7 @@
       ],
       "resources": [],
       "externalBin": [],
-      "copyright": "© 2022 Tauri Template",
+      "copyright": "© 2022 Tauri Svelte Template",
       "category": "DeveloperTool",
       "shortDescription": "",
       "longDescription": "",

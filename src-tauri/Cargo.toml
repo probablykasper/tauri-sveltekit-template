@@ -1,11 +1,11 @@
 [package]
-name = "tauri-template"
+name = "tauri-svelte-template"
 version = "0.1.0"
 description = "A Tauri App"
 authors = ["you"]
 license = ""
 repository = ""
-default-run = "tauri-template"
+default-run = "tauri-svelte-template"
 edition = "2018"
 build = "src/build.rs"
 
