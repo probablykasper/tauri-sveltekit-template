@@ -5,7 +5,7 @@
 - **Svelte**
 - **Vite**
 - **TypeScript**
-- **`svelte-preprocess`** with Sass installed by default
+- **Preprocessing** with Sass installed by default
 - **Hot module replacement**
 - **ESLint**
 - **Prettier**
