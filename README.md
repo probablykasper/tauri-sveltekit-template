@@ -6,7 +6,6 @@
 - **Vite**
 - **TypeScript**
 - **Preprocessing** with Sass installed by default
-- **Hot module replacement**
 - **ESLint**
 - **Prettier**
 
