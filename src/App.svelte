@@ -9,7 +9,7 @@
 </script>
 
 <h1>Svelte Template</h1>
-<p>Edit <code>src/routes/index.svelte</code> to trigger HMR</p>
+<p>Edit <code>src/App.svelte</code> to trigger HMR</p>
 <p>Counter: <code>{count}</code></p>
 
 <style lang="sass">
