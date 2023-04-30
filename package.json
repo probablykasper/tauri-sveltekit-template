@@ -7,13 +7,14 @@
     "dev:web": "vite",
     "build": "tauri build",
     "build:web": "vite build",
-    "lint": "prettier --check src *.js && eslint src *.js && svelte-check",
-    "format": "prettier --write src *.js && eslint --fix src *.js"
+    "lint": "svelte-check --tsconfig ./tsconfig.json && eslint src && prettier --check src",
+    "format": "eslint --fix src && prettier --write src"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.1.1",
     "@tauri-apps/api": "^1.2.0",
     "@tauri-apps/cli": "^1.2.3",
+    "@tsconfig/svelte": "^4.0.1",
     "@typescript-eslint/eslint-plugin": "^5.59.1",
     "@typescript-eslint/parser": "^5.59.1",
     "eslint": "^8.39.0",
