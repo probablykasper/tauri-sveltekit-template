@@ -1,9 +1,8 @@
-# Tauri Svelte Template
+# Tauri SvelteKit Template
 
 - **Tauri**
+- **SvelteKit**
 - **GitHub action** for cross-platform builds
-- **Svelte**
-- **Vite**
 - **TypeScript**
 - **Preprocessing** with Sass installed by default
 - **ESLint**
@@ -17,7 +16,7 @@
 2. Install Rust
 3. Follow the [Tauri setup guide](https://tauri.app/v1/guides/getting-started/setup)
 4. Run `npm install`
-5. Find and replace the text `tauri-svelte-template` and `Tauri Svelte Template`.
+5. Find and replace the text `tauri-sveltekit-template` and `Tauri SvelteKit Template`.
 
 ### Commands
 - `npm run dev`: Start app in dev mode
